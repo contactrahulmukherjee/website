@@ -1,216 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rahul Mukherjee | Project & Product Management</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Mukherjee | Project Management Professional</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<!-- ================== EMBEDDED CSS ================== -->
-<style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  margin: 0;
-  background: #f4f6f8;
-  color: #222;
-}
+    <style>
+        :root {
+            --bg-color: #0a0e17;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --accent: #00f2ff;
+            --text-main: #e0e6ed;
+            --text-muted: #94a3b8;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-header {
-  background: #0b1f33;
-  color: white;
-  padding: 30px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+        /* --- LANDING PAGE OVERLAY --- */
+        #landing-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #05070a, #0f1521);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            padding: 20px;
+        }
 
-.profile-pic {
-  width: 120px;
-  border-radius: 6px;
-}
+        .landing-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: transparent;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInText 1.5s ease-out forwards 0.5s;
+        }
 
-nav {
-  background: #102a43;
-  padding: 10px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-}
+        .enter-btn {
+            padding: 1rem 3rem;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 0;
+            animation: fadeInBtn 1s ease-out forwards 1.5s;
+        }
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: 600;
-}
+        .enter-btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
 
-nav a:hover {
-  text-decoration: underline;
-}
+        @keyframes fadeInText { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInBtn { from { opacity: 0; } to { opacity: 1; } }
 
-section {
-  padding: 40px;
-  max-width: 1100px;
-  margin: auto;
-}
+        body.landing-active { overflow: hidden; }
 
-h3 {
-  border-bottom: 2px solid #0b5ed7;
-  padding-bottom: 8px;
-}
+        /* --- MAIN SITE --- */
+        #main-site {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            display: none; 
+        }
 
-.card {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-left: 5px solid #0b5ed7;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: var(--glass-border);
+        }
 
-.skills li {
-  display: inline-block;
-  background: #e9eef5;
-  padding: 8px 12px;
-  margin: 5px;
-  border-radius: 4px;
-  font-size: 14px;
-}
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
-iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-}
+        /* --- Hero Section --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+        }
 
-footer {
-  background: #0b1f33;
-  color: white;
-  text-align: center;
-  padding: 15px;
-}
-</style>
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--accent), transparent);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-color);
+        }
+
+        .hero-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-text h1 span { color: var(--accent); }
+        .hero-text h2 { font-size: 1.5rem; color: var(--text-muted); font-weight: 400; margin-bottom: 1.5rem; }
+        
+        .contact-bar { display: flex; gap: 1.5rem; margin-top: 2rem; }
+        .contact-icon { 
+            color: var(--text-main); 
+            font-size: 1.5rem; 
+            transition: 0.3s;
+            border: var(--glass-border);
+            padding: 10px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            text-decoration: none;
+        }
+        .contact-icon:hover { color: var(--accent); transform: translateY(-3px); background: rgba(0, 242, 255, 0.1); }
+
+        /* --- Generic Section Styles --- */
+        section { padding: 6rem 10%; }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* --- Cards & Grid --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        
+        .glass-card {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .glass-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        /* --- Experience Timeline --- */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::after {
+            content: ''; position: absolute; width: 2px; background: var(--glass-border);
+            top: 0; bottom: 0; left: 0; margin-left: 20px;
+        }
+        
+        .job-card {
+            position: relative;
+            margin-left: 60px;
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: var(--glass-border);
+        }
+        
+        .job-card::before {
+            content: ''; position: absolute; left: -49px; top: 25px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--accent); border: 4px solid var(--bg-color);
+            z-index: 10;
+        }
+
+        /* Updated Header for No Logos */
+        .company-header { 
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: space-between; 
+            margin-bottom: 1.5rem; 
+            flex-wrap: wrap; 
+        }
+        .job-title { 
+            color: var(--accent); 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            display: block;
+        }
+        .company-name {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+        .job-date { 
+            color: var(--text-muted); 
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        .job-bullets li { margin-bottom: 0.5rem; list-style-position: inside; color: #cbd5e1; }
+
+        /* --- Skills Tags --- */
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .skill-tag {
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .skill-tag:hover { border-color: var(--accent); background: rgba(0, 242, 255, 0.2); }
+
+        /* --- Button --- */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            margin-top: 2rem;
+        }
+        .btn-download:hover { filter: brightness(1.1); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .landing-text { font-size: 2rem; }
+            .hero-content { flex-direction: column-reverse; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .contact-bar { justify-content: center; }
+            section { padding: 4rem 5%; }
+            .company-header { flex-direction: column; gap: 10px; }
+        }
+    </style>
 </head>
+<body class="landing-active">
 
-<body>
-
-<header>
-  <div class="header-container">
-    <img src="assets/20210819_123529.jpg" alt="Rahul Mukherjee" class="profile-pic">
-    <div>
-      <h1>Rahul Mukherjee</h1>
-      <h2>Project Management | Product Operations | Sustainability</h2>
-      <p>
-        <a href="mailto:contactrahulmukherjee@gmail.com" style="color:#9ecbff;">Email</a> |
-        <a href="https://www.linkedin.com/in/rahul-mukherjee1995" target="_blank" style="color:#9ecbff;">LinkedIn</a> |
-        <a href="assets/Rahul_Mukherjee_Resume.pdf" target="_blank" style="color:#9ecbff;">Resume</a>
-      </p>
+    <div id="landing-screen" onclick="enterSite()">
+        <h1 class="landing-text">A very warm Welcome to my profile.</h1>
+        <button class="enter-btn" onclick="enterSite()">Enter Portfolio</button>
     </div>
-  </div>
-</header>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#education">Education</a>
-  <a href="#skills">Skills</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#contact">Contact</a>
-</nav>
+    <div id="main-site">
+        
+        <nav>
+            <div class="logo">RM.</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-<section id="about">
-  <h3>About</h3>
-  <p>
-    Project Management professional with 4+ years of experience, including 2+ years
-    delivering large-scale traceability and sustainability programs for global fashion
-    and apparel brands. Strong in stakeholder management, SaaS implementations,
-    and cross-functional execution.
-  </p>
-</section>
+        <header id="about">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1>Rahul <br><span>Mukherjee</span></h1>
+                    <h2>Project Management Professional</h2>
+                    
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 600px;">
+                        Project Management professional with 4+ years of overall experience, including 2+ years leading cross-functional initiatives. Expert in stakeholder engagement, driving operational excellence, and ensuring compliance with established standards.
+                    </p>
 
-<section id="experience">
-  <h3>Experience</h3>
+                    <div class="contact-bar">
+                        <a href="mailto:contactrahulmukherjee@gmail.com" class="contact-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+917003469505" class="contact-icon" title="Call"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.linkedin.com/in/rahul-mukherjee" target="_blank" class="contact-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <div style="display:flex; align-items:center; gap:10px; color:var(--text-muted)">
+                            <i class="fas fa-map-marker-alt"></i> Bangalore, India
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-img-container" data-aos="zoom-in">
+                    <img src="20210819_123529.jpg" alt="Rahul Mukherjee" class="profile-img">
+                </div>
+            </div>
+        </header>
 
-  <div class="card">
-    <h4>Associate Project Lead – Customer Engagement | TextileGenesis</h4>
-    <p><em>2023 – 2025 | Bengaluru</em></p>
-    <ul>
-      <li>Delivered traceability programs covering 26+ million units across global brands.</li>
-      <li>Led customer-facing compliance across MMC, USCTP, SUPIMA, and Recycled Synthetics.</li>
-      <li>Partnered with product teams to deliver Level-1 traceability modules.</li>
-    </ul>
-  </div>
+        <section id="experience">
+            <h3 class="section-title" data-aos="fade-up">Professional Experience</h3>
+            <div class="timeline">
 
-  <div class="card">
-    <h4>Buying & Merchandising Intern | PUMA Group</h4>
-    <p><em>2023</em></p>
-    <ul>
-      <li>Conducted market and athlete-led research for footwear and accessories.</li>
-      <li>Translated user insights into product and fit improvements.</li>
-    </ul>
-  </div>
-</section>
+                <div class="job-card" data-aos="fade-up">
+                    <div class="company-header">
+                        <div>
+                            <span class="job-title">Associate Project Lead - Customer Engagement</span>
+                            <span class="company-name">TextileGenesis</span>
+                        </div>
+                        <span class="job-date">06/2023 - 10/2025</span>
+                    </div>
+                    <ul class="job-bullets">
+                        <li>Led end-to-end delivery of large-scale supply chain traceability programs covering 14+ million units for American Eagle Outfitters and 12+ million units for Varner.</li>
+                        <li>Acted as the primary liaison between customers and internal teams to align execution with business and sustainability goals.</li>
+                        <li>Drove customer-facing implementations and compliance across MMC, USCTP, SUPIMA, and Recycled Synthetics.</li>
+                        <li>Contributed to product roadmap execution by developing Level 1 traceability and risk-management modules.</li>
+                        <li>Proactively managed risks and delivery challenges using JIRA to maintain timelines.</li>
+                    </ul>
+                </div>
 
-<section id="education">
-  <h3>Education</h3>
+                <div class="job-card" data-aos="fade-up">
+                    <div class="company-header">
+                        <div>
+                            <span class="job-title">Buying and Merchandising Intern</span>
+                            <span class="company-name">PUMA Group</span>
+                        </div>
+                        <span class="job-date">01/2023 - 04/2023</span>
+                    </div>
+                    <ul class="job-bullets">
+                        <li>Conducted in-depth research on the sports accessories and team apparel market, identifying product gaps in cricket-focused sportswear.</li>
+                        <li>Collected direct product feedback from the Indian Women's Cricket team for product development.</li>
+                        <li>Expanded customer reach by targeting new user segments and addressing sizing challenges across socks, belts, and cricket bats.</li>
+                    </ul>
+                </div>
 
-  <div class="card">
-    <strong>Master of Fashion Management</strong><br>
-    National Institute of Fashion Technology, Kannur
-  </div>
+                <div class="job-card" data-aos="fade-up">
+                    <div class="company-header">
+                        <div>
+                            <span class="job-title">Buying Intern (Armani Exchange)</span>
+                            <span class="company-name">Reliance Brands Limited</span>
+                        </div>
+                        <span class="job-date">06/2022 - 07/2022</span>
+                    </div>
+                    <ul class="job-bullets">
+                        <li>Owned buying and planning for the Armani Exchange brand, managing assortments and stock allocation.</li>
+                        <li>Led footwear-focused market and trend analysis to shape the SS23 buying strategy.</li>
+                        <li>Executed inventory planning for the SS22 second delivery to ensure optimal stock availability.</li>
+                        <li>Developed a Product Care Manual and a Training Manual for front-end teams.</li>
+                    </ul>
+                </div>
 
-  <div class="card">
-    <strong>Bachelor of Commerce (Honours)</strong><br>
-    Heramba Chandra College, Kolkata
-  </div>
-</section>
+                <div class="job-card" data-aos="fade-up">
+                    <div class="company-header">
+                        <div>
+                            <span class="job-title">Campus Ambassador & Community Manager</span>
+                            <span class="company-name">Digit.in (9.9 Group)</span>
+                        </div>
+                        <span class="job-date">04/2020 - 04/2021</span>
+                    </div>
+                    <ul class="job-bullets">
+                        <li>Built and scaled micro-level gaming communities, creating structured spaces for gamers.</li>
+                        <li>Partnered with colleges and student groups to expand the reach of gaming initiatives.</li>
+                        <li>Organized gaming nights and community events to strengthen engagement and retention.</li>
+                    </ul>
+                </div>
 
-<section id="skills">
-  <h3>Skills</h3>
-  <ul class="skills">
-    <li>Project Management</li>
-    <li>Product Operations</li>
-    <li>Sustainability Compliance</li>
-    <li>Supply Chain Traceability</li>
-    <li>Stakeholder Management</li>
-    <li>JIRA</li>
-    <li>Data Analysis</li>
-  </ul>
-</section>
+                <div class="job-card" data-aos="fade-up">
+                    <span class="job-title">Early Career</span>
+                    <br>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Research Analyst | A2Z Planner & Solutions</strong> (10/2018 - 11/2019)<br>
+                        <small style="color:var(--text-muted)">Conducted financial analysis and annual report reviews. Led and mentored junior academic researchers.</small>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Business Development | Maneyo Food Pvt. Ltd.</strong> (06/2018 - 09/2018)<br>
+                        <small style="color:var(--text-muted)">Drove B2B customer acquisition and managed the B2C operations team.</small>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Customer Service Associate | Cegura Technology</strong> (08/2017 - 10/2017)<br>
+                        <small style="color:var(--text-muted)">Conducted user persona analysis and built direct communication channels with users.</small>
+                    </div>
+                    <div>
+                        <strong>Tech Support Associate | Met Technologies</strong> (05/2014 - 07/2014)<br>
+                        <small style="color:var(--text-muted)">Drove sales and customer acquisition by pitching and closing new tariff plans.</small>
+                    </div>
+                </div>
 
-<section id="portfolio">
-  <h3>Certificates & Portfolio</h3>
-  <p>Read-only verified certificates and academic records.</p>
-  <iframe src="assets/certificates.pdf"></iframe>
-</section>
+            </div>
+        </section>
 
-<section id="contact">
-  <h3>Contact</h3>
-  <p>
-    📧 contactrahulmukherjee@gmail.com <br>
-    📞 +91 7003469505 <br>
-    📍 Bengaluru, India <br>
-    🌍 Willing to relocate
-  </p>
-</section>
+        <section id="projects" style="background: rgba(255,255,255,0.02);">
+            <h3 class="section-title" data-aos="fade-right">Projects & Volunteer</h3>
+            <div class="grid-3">
+                <div class="glass-card" data-aos="zoom-in">
+                    <i class="fas fa-book-reader fa-2x" style="color:var(--accent); margin-bottom:1rem;"></i>
+                    <h4>Research Paper</h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">2021 - Ongoing</p>
+                    <p style="margin-top:1rem;">Studying the role of fashion in influencing consumer buying behavior within the technology marketplace.</p>
+                </div>
+                <div class="glass-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-hands-helping fa-2x" style="color:var(--accent); margin-bottom:1rem;"></i>
+                    <h4>Skill Development Trainer</h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Kudumbasree (Govt. of Kerala)</p>
+                    <p style="margin-top:1rem;">Facilitated rural artisans on WhatsApp marketing techniques and supported onboarding of artisan digital profiles.</p>
+                </div>
+            </div>
+        </section>
 
-<footer>
-  © Rahul Mukherjee | Professional Portfolio
-</footer>
+        <section id="skills">
+            <h3 class="section-title" data-aos="fade-right">Skills & Expertise</h3>
+            <div class="glass-card" data-aos="fade-up">
+                <div class="skill-tags">
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Supply Chain Management</span>
+                    <span class="skill-tag">Traceability Systems</span>
+                    <span class="skill-tag">Sustainability Standards</span>
+                    <span class="skill-tag">Stakeholder Management</span>
+                    <span class="skill-tag">Product Management</span>
+                    <span class="skill-tag">Market Research</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">JIRA</span>
+                    <span class="skill-tag">CRM Platforms</span>
+                    <span class="skill-tag">Business Modelling</span>
+                    <span class="skill-tag">Customer Engagement</span>
+                </div>
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                     <h5 style="color:var(--text-muted); margin-bottom:10px;">Additional Info</h5>
+                     <p style="font-size: 0.9rem;"><strong>Tools:</strong> JIRA, Outlook, Monday.com</p>
+                     <p style="font-size: 0.9rem;"><strong>Compliance:</strong> MMC, USCTP, SUPIMA, Recycled Synthetics</p>
+                </div>
+            </div>
+        </section>
 
-<!-- ================== EMBEDDED SCRIPT ================== -->
-<script>
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    document
-      .querySelector(link.getAttribute('href'))
-      .scrollIntoView({ behavior: 'smooth' });
-  });
-});
-</script>
+        <section id="education">
+            <h3 class="section-title" data-aos="fade-right">Education & Certifications</h3>
+            <div class="grid-3">
+                <div class="glass-card" data-aos="fade-up">
+                    <h4>Masters (MFM)</h4>
+                    <p style="color:var(--accent);">NIFT, Kannur</p>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">2021 - 2023</p>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;">Business, Management, Marketing, Fashion Retail, Supply Chain.</p>
+                </div>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Bachelor (Honours)</h4>
+                    <p style="color:var(--accent);">Heramba Chandra College</p>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">2014 - 2017</p>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;">Business / Commerce</p>
+                </div>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Certifications</h4>
+                    <ul style="font-size:0.8rem; list-style:none; margin-top:0.5rem;">
+                        <li style="margin-bottom:5px;">• Acct. Technicians (ICAI, 2021)</li>
+                        <li style="margin-bottom:5px;">• Front-End Web Dev (Udacity, 2018)</li>
+                        <li style="margin-bottom:5px;">• FTCP Hardware Networking (2017)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
+        <section id="certificates" style="text-align: center; background: linear-gradient(to top, #000, transparent);">
+            <h3 class="section-title" style="border:none; text-align:center;">Certificates and Documents</h3>
+            <p>Review my detailed certifications and official documents.</p>
+            
+            <a href="certificates.pdf" target="_blank" class="btn-download">
+                <i class="fas fa-file-pdf"></i> View Certificates.pdf
+            </a>
+        </section>
+
+        <footer id="contact" style="padding: 4rem 10%; background: #000; text-align: center; border-top: var(--glass-border);">
+            <h2 style="margin-bottom: 2rem;">Let's Connect</h2>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="mailto:contactrahulmukherjee@gmail.com" style="color: white; text-decoration: none;">contactrahulmukherjee@gmail.com</a>
+                <a href="tel:+917003469505" style="color: white; text-decoration: none;">+91 7003469505</a>
+            </div>
+            <p style="color: var(--text-muted); margin-top: 2rem; font-size: 0.8rem;">
+                © 2026 Rahul Mukherjee. Built for GitHub Pages.
+            </p>
+        </footer>
+
+    </div> <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Landing Page Transition
+        function enterSite() {
+            const landing = document.getElementById('landing-screen');
+            const main = document.getElementById('main-site');
+            const body = document.body;
+
+            // Fade out landing
+            landing.style.opacity = '0';
+            landing.style.transform = 'translateY(-100vh)';
+            
+            setTimeout(() => {
+                landing.style.display = 'none';
+                body.classList.remove('landing-active');
+                
+                // Show Main Site
+                main.style.display = 'block';
+                // Trigger reflow to restart CSS transition
+                void main.offsetWidth; 
+                main.style.opacity = '1';
+                
+                // Initialize AOS animations only after site is visible
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            }, 800);
+        }
+    </script>
 </body>
 </html>
-
