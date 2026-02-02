@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rahul Mukherjee | Project & Product Management</title>
+
+<!-- ================== EMBEDDED CSS ================== -->
+<style>
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   margin: 0;
@@ -26,6 +35,8 @@ nav {
   background: #102a43;
   padding: 10px;
   text-align: center;
+  position: sticky;
+  top: 0;
 }
 
 nav a {
@@ -35,10 +46,19 @@ nav a {
   font-weight: 600;
 }
 
+nav a:hover {
+  text-decoration: underline;
+}
+
 section {
   padding: 40px;
   max-width: 1100px;
   margin: auto;
+}
+
+h3 {
+  border-bottom: 2px solid #0b5ed7;
+  padding-bottom: 8px;
 }
 
 .card {
@@ -46,6 +66,7 @@ section {
   padding: 20px;
   margin-bottom: 20px;
   border-left: 5px solid #0b5ed7;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .skills li {
@@ -54,6 +75,7 @@ section {
   padding: 8px 12px;
   margin: 5px;
   border-radius: 4px;
+  font-size: 14px;
 }
 
 iframe {
@@ -68,3 +90,126 @@ footer {
   text-align: center;
   padding: 15px;
 }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <img src="assets/profile.jpg" alt="Rahul Mukherjee" class="profile-pic">
+    <div>
+      <h1>Rahul Mukherjee</h1>
+      <h2>Project Management | Product Operations | Sustainability</h2>
+      <p>
+        <a href="mailto:contactrahulmukherjee@gmail.com" style="color:#9ecbff;">Email</a> |
+        <a href="https://www.linkedin.com/in/rahul-mukherjee1995" target="_blank" style="color:#9ecbff;">LinkedIn</a> |
+        <a href="assets/Rahul_Mukherjee_Resume.pdf" target="_blank" style="color:#9ecbff;">Resume</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h3>About</h3>
+  <p>
+    Project Management professional with 4+ years of experience, including 2+ years
+    delivering large-scale traceability and sustainability programs for global fashion
+    and apparel brands. Strong in stakeholder management, SaaS implementations,
+    and cross-functional execution.
+  </p>
+</section>
+
+<section id="experience">
+  <h3>Experience</h3>
+
+  <div class="card">
+    <h4>Associate Project Lead – Customer Engagement | TextileGenesis</h4>
+    <p><em>2023 – 2025 | Bengaluru</em></p>
+    <ul>
+      <li>Delivered traceability programs covering 26+ million units across global brands.</li>
+      <li>Led customer-facing compliance across MMC, USCTP, SUPIMA, and Recycled Synthetics.</li>
+      <li>Partnered with product teams to deliver Level-1 traceability modules.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Buying & Merchandising Intern | PUMA Group</h4>
+    <p><em>2023</em></p>
+    <ul>
+      <li>Conducted market and athlete-led research for footwear and accessories.</li>
+      <li>Translated user insights into product and fit improvements.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="education">
+  <h3>Education</h3>
+
+  <div class="card">
+    <strong>Master of Fashion Management</strong><br>
+    National Institute of Fashion Technology, Kannur
+  </div>
+
+  <div class="card">
+    <strong>Bachelor of Commerce (Honours)</strong><br>
+    Heramba Chandra College, Kolkata
+  </div>
+</section>
+
+<section id="skills">
+  <h3>Skills</h3>
+  <ul class="skills">
+    <li>Project Management</li>
+    <li>Product Operations</li>
+    <li>Sustainability Compliance</li>
+    <li>Supply Chain Traceability</li>
+    <li>Stakeholder Management</li>
+    <li>JIRA</li>
+    <li>Data Analysis</li>
+  </ul>
+</section>
+
+<section id="portfolio">
+  <h3>Certificates & Portfolio</h3>
+  <p>Read-only verified certificates and academic records.</p>
+  <iframe src="assets/certificates.pdf"></iframe>
+</section>
+
+<section id="contact">
+  <h3>Contact</h3>
+  <p>
+    📧 contactrahulmukherjee@gmail.com <br>
+    📞 +91 7003469505 <br>
+    📍 Bengaluru, India <br>
+    🌍 Willing to relocate
+  </p>
+</section>
+
+<footer>
+  © Rahul Mukherjee | Professional Portfolio
+</footer>
+
+<!-- ================== EMBEDDED SCRIPT ================== -->
+<script>
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document
+      .querySelector(link.getAttribute('href'))
+      .scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
