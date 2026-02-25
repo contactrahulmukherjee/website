@@ -1,316 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Mukherjee | Project Leader</title>
 
-<meta name="description" content="Rahul Mukherjee - Project Manager specializing in global supply chain traceability, governance frameworks, and cross-functional program leadership." />
-<meta name="keywords" content="Rahul Mukherjee, Project Manager, Supply Chain, Traceability, TextileGenesis, Governance, Agile" />
-<meta name="author" content="Rahul Mukherjee" />
-
-<meta property="og:title" content="Rahul Mukherjee | Project Leader" />
-<meta property="og:description" content="Leading large-scale traceability and governance programs across global retail ecosystems." />
-<meta property="og:type" content="website" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===== ROOT ===== */
-
-:root {
-  --bg: #ffffff;
-  --text: #111;
-  --muted: #6e6e73;
-  --accent: #0071e3;
-}
-
-body.dark {
-  --bg: #0b0b0c;
-  --text: #f5f5f7;
-  --muted: #a1a1a6;
-  --accent: #2997ff;
-}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none;
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  transition: background 0.4s ease, color 0.4s ease;
+  background: #000;
+  color: #fff;
   overflow-x: hidden;
 }
 
-/* ===== CUSTOM CURSOR ===== */
-
-.cursor {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease;
-}
-
-/* ===== NAV ===== */
-
-nav {
-  position: fixed;
-  width: 100%;
-  padding: 30px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  transition: 0.4s ease;
-}
-
-nav.scrolled {
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.8);
-}
-
-body.dark nav.scrolled {
-  background: rgba(0,0,0,0.7);
-}
-
-nav a {
-  margin-left: 40px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 0.95rem;
+section {
+  padding: 100px 10%;
   position: relative;
 }
 
-/* ===== SECTIONS ===== */
-
-section {
-  padding: 160px 8%;
-  max-width: 1400px;
-  margin: auto;
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-h1 {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 600;
-  letter-spacing: -1px;
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(90deg,#ffffff,#999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 50px;
-}
-
-p {
-  color: var(--muted);
-  line-height: 1.8;
+.hero-text p {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  color: #aaa;
   max-width: 600px;
 }
 
-/* ===== BUTTON ===== */
-
-.btn {
-  margin-top: 40px;
-  padding: 14px 36px;
+.hero img {
+  width: 350px;
   border-radius: 30px;
-  border: 1px solid var(--text);
-  background: transparent;
-  transition: 0.3s ease;
+  transition: 0.5s;
+  box-shadow: 0 40px 80px rgba(255,255,255,0.1);
 }
 
-.btn:hover {
-  background: var(--text);
-  color: var(--bg);
+.hero img:hover {
+  transform: scale(1.05);
 }
 
-/* ===== GRID ===== */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  gap: 40px;
+.button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s;
 }
 
-.card {
-  border: 1px solid #e5e5e5;
-  padding: 50px;
-  transition: 0.4s ease;
+.button:hover {
+  background: #ddd;
+}
+
+.timeline {
+  border-left: 2px solid #333;
+  padding-left: 30px;
+}
+
+.timeline-item {
+  margin-bottom: 50px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+.timeline-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
-/* ===== CASE PANEL ===== */
-
-.case-panel {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 60%;
-  height: 100vh;
-  background: var(--bg);
-  padding: 80px;
-  overflow-y: auto;
-  transition: right 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-  z-index: 2000;
+.timeline-item p {
+  color: #aaa;
+  display: none;
 }
 
-.case-panel.active {
-  right: 0;
+.timeline-item.active p {
+  display: block;
 }
 
-/* ===== PAGE TRANSITION ===== */
-
-.fade-overlay {
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  z-index: 3000;
-  opacity: 1;
-  pointer-events: none;
-  transition: opacity 0.8s ease;
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 30px;
 }
 
-.fade-overlay.hide {
+.skill {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.bar {
+  height: 6px;
+  background: #333;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 20px;
+  background: white;
+  width: 0%;
+  transition: 1.5s ease;
+}
+
+.fade-in {
   opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #666;
 }
 
 </style>
 </head>
-
 <body>
 
-<div class="fade-overlay"></div>
-<div class="cursor"></div>
-
-<nav>
-  <div><strong>RM</strong></div>
-  <div>
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="resume.pdf" download>Resume</a>
-    <a onclick="toggleDark()">☾</a>
-  </div>
-</nav>
-
 <section class="hero">
-  <h1 class="animate">Leading Complex Global Programs</h1>
-  <p class="animate">Driving 26M+ unit traceability and governance frameworks across international retail ecosystems.</p>
-  <button class="btn animate">View Work</button>
+  <div class="hero-text fade-in">
+    <h1>Rahul Mukherjee</h1>
+    <p>Project Manager | Supply Chain Technology | Agile & Governance Leader</p>
+    <p>Led 26M+ unit traceability programs across global retail ecosystems. Bridging technology, compliance and execution excellence.</p>
+    <a href="Rahul_Mukherjee_Resume.pdf" class="button">Download Resume</a>
+  </div>
+  <img src="20210819_123529.jpg" alt="Rahul Mukherjee">
 </section>
 
-<section id="work">
-  <h2>Selected Programs</h2>
+<section>
+  <h2 class="fade-in">Experience Timeline</h2>
+  <div class="timeline fade-in">
 
-  <div class="grid">
-    <div class="card" onclick="openCase('Global Traceability Rollout',
-    'Led 26M+ unit implementation across multi-brand retail ecosystems with structured governance and sprint cadence.')">
-      <h3>Global Traceability Rollout</h3>
-      <p>26M+ units delivered.</p>
+    <div class="timeline-item">
+      <h3>Associate Project Lead — TextileGenesis (2023–2025)</h3>
+      <p>Led 14M+ units for American Eagle & 12M+ for Varner. Owned sprint planning, governance, compliance (MMC, USCTP, SUPIMA), KPI dashboards & risk management modules.</p>
     </div>
 
-    <div class="card" onclick="openCase('Compliance & Governance',
-    'Integrated MMC, USCTP, SUPIMA compliance frameworks across cross-border regulatory ecosystems.')">
-      <h3>Compliance & Governance</h3>
-      <p>Multi-framework integration.</p>
+    <div class="timeline-item">
+      <h3>Buying & Merchandising — PUMA Group (2023)</h3>
+      <p>Strategic product research, assortment planning, sportswear expansion, and pricing optimization.</p>
     </div>
+
+    <div class="timeline-item">
+      <h3>Buying Intern — Reliance Brands</h3>
+      <p>Led footwear trend analysis for SS23, inventory execution for Armani Exchange.</p>
+    </div>
+
   </div>
 </section>
 
-<section id="about">
-  <h2>About</h2>
-  <p>Project Leader with 4+ years delivering large-scale supply chain implementations across technology-driven retail ecosystems.</p>
+<section>
+  <h2 class="fade-in">Core Strength</h2>
+  <div class="skills fade-in">
+
+    <div class="skill">
+      Agile & Sprint Leadership
+      <div class="bar"><div class="progress" data-progress="95%"></div></div>
+    </div>
+
+    <div class="skill">
+      Governance & Compliance
+      <div class="bar"><div class="progress" data-progress="90%"></div></div>
+    </div>
+
+    <div class="skill">
+      Cross Functional Leadership
+      <div class="bar"><div class="progress" data-progress="92%"></div></div>
+    </div>
+
+    <div class="skill">
+      KPI & Dashboard Strategy
+      <div class="bar"><div class="progress" data-progress="88%"></div></div>
+    </div>
+
+  </div>
 </section>
 
-<div id="casePanel" class="case-panel"></div>
+<section>
+  <h2 class="fade-in">Certifications</h2>
+  <p class="fade-in">Google Project Management | Accounting Technicians | Harappa Change Leadership | UNSW College | Udacity Scholar</p>
+  <a href="certificates.pdf" class="button fade-in">View Certificates</a>
+</section>
+
+<footer>
+  © 2026 Rahul Mukherjee | Built with Precision.
+</footer>
 
 <script>
 
-/* ===== PAGE LOAD FADE ===== */
-window.addEventListener("load", () => {
-  document.querySelector(".fade-overlay").classList.add("hide");
-});
-
-/* ===== NAV SCROLL ===== */
-window.addEventListener("scroll", () => {
-  document.querySelector("nav").classList.toggle("scrolled", window.scrollY > 50);
-});
-
-/* ===== DARK MODE ===== */
-function toggleDark() {
-  document.body.classList.toggle("dark");
-}
-
-/* ===== CUSTOM CURSOR ===== */
-const cursor = document.querySelector(".cursor");
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-
-/* ===== CASE PANEL ===== */
-function openCase(title, content) {
-  const panel = document.getElementById("casePanel");
-  panel.innerHTML = `
-    <h2>${title}</h2>
-    <p style="margin-top:30px;">${content}</p>
-    <br><br>
-    <button class="btn" onclick="closeCase()">Close</button>
-  `;
-  panel.classList.add("active");
-}
-
-function closeCase() {
-  document.getElementById("casePanel").classList.remove("active");
-}
-
-/* ===== GSAP ANIMATIONS ===== */
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".hero h1", {
-  y: 80,
-  opacity: 0,
-  duration: 1.2,
-  ease: "power3.out"
-});
-
-gsap.from(".hero p", {
-  y: 50,
-  opacity: 0,
-  delay: 0.4,
-  duration: 1
-});
-
-gsap.utils.toArray("section").forEach(section => {
-  gsap.from(section.querySelectorAll("h2, p, .card"), {
-    scrollTrigger: {
-      trigger: section,
-      start: "top 80%"
-    },
-    y: 60,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2
+// Timeline click interaction
+document.querySelectorAll(".timeline-item").forEach(item=>{
+  item.addEventListener("click",()=>{
+    item.classList.toggle("active");
   });
 });
+
+// Scroll fade animation
+const faders = document.querySelectorAll(".fade-in");
+const appear = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+faders.forEach(el=>appear.observe(el));
+
+// Skill animation
+const skills = document.querySelectorAll(".progress");
+const skillObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.width = entry.target.dataset.progress;
+    }
+  });
+});
+skills.forEach(skill=>skillObserver.observe(skill));
 
 </script>
 
