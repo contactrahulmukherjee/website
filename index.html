@@ -3,170 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahul Mukherjee | Project Manager</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<title>Rahul Mukherjee | Project & Program Leadership</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-font-family:'Inter',sans-serif;
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000;
+    color: white;
+    overflow-x:hidden;
 }
 
-body{
-background:#000;
-color:#fff;
-overflow-x:hidden;
+section {
+    padding: 100px 8%;
 }
 
-section{
-padding:100px 12%;
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background: linear-gradient(180deg,#000,#0f172a);
 }
 
-h2{
-font-size:2.5rem;
-margin-bottom:40px;
+.hero img {
+    width:200px;
+    border-radius:50%;
+    margin-bottom:30px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+    animation: fadeIn 1.5s ease forwards;
 }
 
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:space-between;
+.hero h1 {
+    font-size:64px;
+    font-weight:800;
+    animation: fadeUp 1.2s ease forwards;
 }
 
-.hero-text h1{
-font-size:4rem;
-background:linear-gradient(90deg,#fff,#777);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.hero p {
+    font-size:20px;
+    margin-top:20px;
+    opacity:0.7;
+    max-width:700px;
 }
 
-.hero-text p{
-margin-top:20px;
-color:#aaa;
-font-size:1.2rem;
-max-width:650px;
+.btn-group {
+    margin-top:40px;
 }
 
-.hero img{
-width:350px;
-border-radius:30px;
-box-shadow:0 40px 80px rgba(255,255,255,0.1);
-transition:0.4s;
+.btn {
+    display:inline-block;
+    padding:14px 28px;
+    margin:10px;
+    border-radius:30px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    font-weight:600;
+    transition: all .3s ease;
 }
 
-.hero img:hover{
-transform:scale(1.05);
+.btn:hover {
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(255,255,255,0.3);
 }
 
-.button{
-display:inline-block;
-margin-top:30px;
-padding:12px 30px;
-background:#fff;
-color:#000;
-border-radius:30px;
-text-decoration:none;
-font-weight:600;
-transition:0.3s;
+.glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius:20px;
+    padding:40px;
+    margin-bottom:40px;
+    transition: all .4s ease;
 }
 
-.button:hover{
-background:#ddd;
+.glass:hover {
+    transform:translateY(-8px);
 }
 
-.metrics{
-display:flex;
-gap:80px;
-margin-top:60px;
+.timeline {
+    border-left:2px solid rgba(255,255,255,0.3);
+    padding-left:40px;
 }
 
-.metric{
-font-size:2rem;
-font-weight:700;
+.timeline-item {
+    margin-bottom:60px;
 }
 
-.metric span{
-display:block;
-font-size:1rem;
-color:#aaa;
-font-weight:400;
-margin-top:5px;
+.timeline-item h3 {
+    font-size:28px;
+    margin-bottom:10px;
 }
 
-.timeline{
-border-left:2px solid #333;
-padding-left:40px;
+.timeline-item span {
+    opacity:0.6;
+    font-size:14px;
 }
 
-.timeline-item{
-margin-bottom:60px;
-cursor:pointer;
+.skills-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
 }
 
-.timeline-item h3{
-font-size:1.4rem;
-margin-bottom:10px;
+.footer {
+    text-align:center;
+    padding:80px 20px;
+    background:#0a0a0a;
 }
 
-.timeline-item .details{
-color:#aaa;
-display:none;
-line-height:1.6;
-margin-top:10px;
+.footer a {
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
 }
 
-.timeline-item.active .details{
-display:block;
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(40px);}
+    to {opacity:1; transform:translateY(0);}
 }
 
-.skills{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.skill{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:20px;
-}
-
-.bar{
-height:6px;
-background:#333;
-border-radius:20px;
-margin-top:10px;
-}
-
-.progress{
-height:6px;
-border-radius:20px;
-background:#fff;
-width:0%;
-transition:1.5s ease;
-}
-
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s ease;
-}
-
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
-
-footer{
-text-align:center;
-padding:40px;
-color:#666;
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
 }
 
 </style>
@@ -174,147 +137,79 @@ color:#666;
 <body>
 
 <section class="hero">
-<div class="hero-text fade">
-<h1>Rahul Mukherjee</h1>
-<p>Project Manager with 4+ years of experience in agile and waterfall program management within technology-driven supply chains. Specialized in large-scale traceability implementations, governance frameworks, compliance execution and stakeholder-led delivery.</p>
-<a href="Rahul_Mukherjee_Resume.pdf" class="button">Download Resume</a>
-
-<div class="metrics">
-<div class="metric">26M+<span>Units Delivered</span></div>
-<div class="metric">4+<span>Years Experience</span></div>
-<div class="metric">15<span>Member Teams Led</span></div>
-</div>
-
-</div>
-<img src="20210819_123529.jpg">
+    <img src="20210819_123529.jpg" alt="Rahul Mukherjee">
+    <h1>Rahul Mukherjee</h1>
+    <p>Project & Program Leader building scalable, traceable, technology-driven supply chains. 26M+ units delivered across global implementations.</p>
+    <div class="btn-group">
+        <a href="#experience" class="btn">View Experience</a>
+        <a href="Rahul_Mukherjee_Resume.pdf" class="btn" target="_blank">Download Resume</a>
+        <a href="certificates.pdf" class="btn" target="_blank">Certifications</a>
+    </div>
 </section>
 
 <section>
-<h2 class="fade">Professional Experience</h2>
-<div class="timeline fade">
+    <div class="glass">
+        <h2>About</h2>
+        <p>Project Manager with 4+ years of experience in Agile and Waterfall methodologies within technology-driven supply chains. Led 26M+ unit traceability programs ensuring governance, compliance, risk mitigation, and cross-functional leadership.</p>
+    </div>
+</section>
 
-<div class="timeline-item">
-<h3>Associate Project Lead — TextileGenesis (June 2023 – Oct 2025)</h3>
-<div class="details">
-• Led end-to-end delivery of supply chain traceability programs covering 14+ million units for American Eagle Outfitters and 12+ million units for Varner.<br><br>
-• Managed cross-functional teams across product, engineering, compliance, and customer success to deliver enterprise-scale implementations.<br><br>
-• Owned full project lifecycle including planning, sprint execution, stakeholder communication, risk mitigation, governance, and change management.<br><br>
-• Drove compliance initiatives across MMC, USCTP, SUPIMA, and Recycled Synthetics ensuring audit readiness and transparency across global supply chains.<br><br>
-• Facilitated sprint planning and backlog prioritization using JIRA to proactively resolve dependencies and execution risks.<br><br>
-• Contributed to roadmap development and rollout of Level 1 traceability and risk management modules for footwear supply chains.<br><br>
-• Established KPI dashboards to track adoption rates, performance metrics, and measure implementation success.
-</div>
-</div>
+<section id="experience">
+    <h2 style="margin-bottom:60px;">Experience Timeline</h2>
+    <div class="timeline">
 
-<div class="timeline-item">
-<h3>Buying & Merchandising — PUMA Group (Jan 2023 – Apr 2023)</h3>
-<div class="details">
-• Identified product gaps, market trends and growth opportunities enhancing strategic direction for cricket-focused sportswear.<br><br>
-• Conducted in-depth research on sports accessories and team apparel informing development of socks, footwear and cricket equipment.<br><br>
-• Addressed sizing challenges and optimized assortment planning and pricing strategies to expand customer reach.
-</div>
-</div>
+        <div class="timeline-item">
+            <h3>Associate Project Lead — TextileGenesis</h3>
+            <span>June 2023 – October 2025 | Bengaluru</span>
+            <p>Led end-to-end delivery of traceability programs covering 14M+ units for American Eagle Outfitters and 12M+ units for Varner. Owned full lifecycle: sprint execution, governance, risk mitigation, compliance (MMC, USCTP, SUPIMA, Recycled Synthetics), KPI dashboards, and Level 1 risk modules rollout.</p>
+        </div>
 
-<div class="timeline-item">
-<h3>Buying Intern — Reliance Brands Limited (June 2022 – July 2022)</h3>
-<div class="details">
-• Led footwear-focused market and trend analysis informing SS23 buying strategy aligned to consumer trends.<br><br>
-• Managed buying and planning for Armani Exchange optimizing seasonal demand planning and stock allocation.<br><br>
-• Executed inventory planning for SS22 second delivery ensuring timely stock availability.<br><br>
-• Developed Product Care Manual and Training Manual strengthening luxury retail customer experience.
-</div>
-</div>
+        <div class="timeline-item">
+            <h3>Buying & Merchandising — PUMA Group</h3>
+            <span>Jan 2023 – Apr 2023 | Bengaluru</span>
+            <p>Identified product gaps and market opportunities for cricket sportswear. Conducted accessories research, supported assortment planning, pricing optimization, and sizing expansion strategies.</p>
+        </div>
 
-<div class="timeline-item">
-<h3>Research Analyst Writer — A2Z Planner & Solutions</h3>
-<div class="details">
-• Designed and executed market research strategies identifying trends and business opportunities.<br><br>
-• Conducted financial analysis and annual report reviews supporting management decision-making.<br><br>
-• Mentored junior researchers fostering structured research processes and team development.
-</div>
-</div>
+        <div class="timeline-item">
+            <h3>Buying Intern — Reliance Brands Limited</h3>
+            <span>June 2022 – July 2022 | Gurugram</span>
+            <p>Led footwear trend analysis for SS23. Managed Armani Exchange demand planning, optimized inventory allocation, and developed product care training manuals.</p>
+        </div>
 
-</div>
+        <div class="timeline-item">
+            <h3>Earlier Leadership & Research Roles</h3>
+            <span>2014 – 2021</span>
+            <p>Built and led 15-member execution team at Maneyo Food. Conducted market research at A2Z Planner. Scaled gaming communities at Digit. Delivered telecom sales conversions and customer analytics-driven product improvements.</p>
+        </div>
+
+    </div>
 </section>
 
 <section>
-<h2 class="fade">Core Competencies</h2>
-<div class="skills fade">
-
-<div class="skill">
-Agile & Waterfall Program Management
-<div class="bar"><div class="progress" data-progress="95%"></div></div>
-</div>
-
-<div class="skill">
-Governance & Compliance Execution
-<div class="bar"><div class="progress" data-progress="92%"></div></div>
-</div>
-
-<div class="skill">
-Cross-Functional Leadership
-<div class="bar"><div class="progress" data-progress="93%"></div></div>
-</div>
-
-<div class="skill">
-Risk Management & KPI Reporting
-<div class="bar"><div class="progress" data-progress="90%"></div></div>
-</div>
-
-</div>
+    <h2 style="margin-bottom:50px;">Core Skills</h2>
+    <div class="skills-grid">
+        <div class="glass">Agile & Waterfall Methodologies</div>
+        <div class="glass">Sprint Planning & Roadmap Execution</div>
+        <div class="glass">Governance & Compliance</div>
+        <div class="glass">Cross-functional Leadership</div>
+        <div class="glass">KPI Tracking & Dashboards</div>
+        <div class="glass">JIRA & Data Analysis</div>
+    </div>
 </section>
 
 <section>
-<h2 class="fade">Education & Certifications</h2>
-<div class="fade" style="color:#aaa;line-height:1.8;">
-Masters of Fashion Management — National Institute of Fashion Technology (2023)<br>
-Bachelor of Commerce — Heramba Chandra College (2017)<br><br>
-Foundations of Project Management – Google<br>
-Accounting Technicians – Institute of Cost Accountants of India<br>
-Google India Challenge Scholarship – Udacity<br>
-Embracing Change – Harappa<br>
-UNSW College Certifications<br>
-Key-Frame Short Film Competition – 1st Prize
-<br><br>
-Languages: English | Bengali | Hindi
-<br><br>
-<a href="certificates.pdf" class="button">View Certificates</a>
-</div>
+    <div class="glass">
+        <h2>Education</h2>
+        <p><strong>Masters of Fashion Management</strong> — National Institute of Fashion Technology (2023)</p>
+        <p><strong>Bachelor of Commerce</strong> — Heramba Chandra College (2017)</p>
+    </div>
 </section>
 
-<footer>
-© 2026 Rahul Mukherjee | Precision in Execution.
-</footer>
-
-<script>
-
-document.querySelectorAll(".timeline-item").forEach(item=>{
-item.addEventListener("click",()=>{
-item.classList.toggle("active");
-});
-});
-
-const faders=document.querySelectorAll(".fade");
-const appear=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-faders.forEach(el=>appear.observe(el));
-
-const skills=document.querySelectorAll(".progress");
-const skillObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.style.width=entry.target.dataset.progress;
-}
-});
-});
-skills.forEach(skill=>skillObserver.observe(skill));
-
-</script>
+<section class="footer">
+    <h2>Let’s Build Scalable Systems Together</h2>
+    <p style="margin:20px 0;">contactrahulmukherjee@gmail.com | +91 7278746204</p>
+    <a href="https://www.linkedin.com/in/rahul-mukherjee1995" target="_blank">LinkedIn</a>
+</section>
 
 </body>
 </html>
