@@ -3,147 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahul Mukherjee | Project Leader</title>
+<title>Rahul Mukherjee | Project Manager</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: 'Inter', sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Inter',sans-serif;
 }
 
-body {
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
 }
 
-section {
-  padding: 100px 10%;
-  position: relative;
+section{
+padding:100px 12%;
 }
 
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+h2{
+font-size:2.5rem;
+margin-bottom:40px;
 }
 
-.hero-text h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  background: linear-gradient(90deg,#ffffff,#999);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
-.hero-text p {
-  font-size: 1.3rem;
-  margin-top: 20px;
-  color: #aaa;
-  max-width: 600px;
+.hero-text h1{
+font-size:4rem;
+background:linear-gradient(90deg,#fff,#777);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.hero img {
-  width: 350px;
-  border-radius: 30px;
-  transition: 0.5s;
-  box-shadow: 0 40px 80px rgba(255,255,255,0.1);
+.hero-text p{
+margin-top:20px;
+color:#aaa;
+font-size:1.2rem;
+max-width:650px;
 }
 
-.hero img:hover {
-  transform: scale(1.05);
+.hero img{
+width:350px;
+border-radius:30px;
+box-shadow:0 40px 80px rgba(255,255,255,0.1);
+transition:0.4s;
 }
 
-.button {
-  margin-top: 30px;
-  padding: 12px 30px;
-  border-radius: 30px;
-  background: white;
-  color: black;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  transition: 0.3s;
+.hero img:hover{
+transform:scale(1.05);
 }
 
-.button:hover {
-  background: #ddd;
+.button{
+display:inline-block;
+margin-top:30px;
+padding:12px 30px;
+background:#fff;
+color:#000;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
 }
 
-.timeline {
-  border-left: 2px solid #333;
-  padding-left: 30px;
+.button:hover{
+background:#ddd;
 }
 
-.timeline-item {
-  margin-bottom: 50px;
-  cursor: pointer;
-  transition: 0.3s;
+.metrics{
+display:flex;
+gap:80px;
+margin-top:60px;
 }
 
-.timeline-item h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+.metric{
+font-size:2rem;
+font-weight:700;
 }
 
-.timeline-item p {
-  color: #aaa;
-  display: none;
+.metric span{
+display:block;
+font-size:1rem;
+color:#aaa;
+font-weight:400;
+margin-top:5px;
 }
 
-.timeline-item.active p {
-  display: block;
+.timeline{
+border-left:2px solid #333;
+padding-left:40px;
 }
 
-.skills {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  gap: 30px;
+.timeline-item{
+margin-bottom:60px;
+cursor:pointer;
 }
 
-.skill {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 20px;
+.timeline-item h3{
+font-size:1.4rem;
+margin-bottom:10px;
 }
 
-.bar {
-  height: 6px;
-  background: #333;
-  border-radius: 20px;
-  margin-top: 10px;
+.timeline-item .details{
+color:#aaa;
+display:none;
+line-height:1.6;
+margin-top:10px;
 }
 
-.progress {
-  height: 6px;
-  border-radius: 20px;
-  background: white;
-  width: 0%;
-  transition: 1.5s ease;
+.timeline-item.active .details{
+display:block;
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s ease;
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
 }
 
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
+.skill{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
 }
 
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #666;
+.bar{
+height:6px;
+background:#333;
+border-radius:20px;
+margin-top:10px;
+}
+
+.progress{
+height:6px;
+border-radius:20px;
+background:#fff;
+width:0%;
+transition:1.5s ease;
+}
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#666;
 }
 
 </style>
@@ -151,102 +174,143 @@ footer {
 <body>
 
 <section class="hero">
-  <div class="hero-text fade-in">
-    <h1>Rahul Mukherjee</h1>
-    <p>Project Manager | Supply Chain Technology | Agile & Governance Leader</p>
-    <p>Led 26M+ unit traceability programs across global retail ecosystems. Bridging technology, compliance and execution excellence.</p>
-    <a href="Rahul_Mukherjee_Resume.pdf" class="button">Download Resume</a>
-  </div>
-  <img src="20210819_123529.jpg" alt="Rahul Mukherjee">
+<div class="hero-text fade">
+<h1>Rahul Mukherjee</h1>
+<p>Project Manager with 4+ years of experience in agile and waterfall program management within technology-driven supply chains. Specialized in large-scale traceability implementations, governance frameworks, compliance execution and stakeholder-led delivery.</p>
+<a href="Rahul_Mukherjee_Resume.pdf" class="button">Download Resume</a>
+
+<div class="metrics">
+<div class="metric">26M+<span>Units Delivered</span></div>
+<div class="metric">4+<span>Years Experience</span></div>
+<div class="metric">15<span>Member Teams Led</span></div>
+</div>
+
+</div>
+<img src="20210819_123529.jpg">
 </section>
 
 <section>
-  <h2 class="fade-in">Experience Timeline</h2>
-  <div class="timeline fade-in">
+<h2 class="fade">Professional Experience</h2>
+<div class="timeline fade">
 
-    <div class="timeline-item">
-      <h3>Associate Project Lead — TextileGenesis (2023–2025)</h3>
-      <p>Led 14M+ units for American Eagle & 12M+ for Varner. Owned sprint planning, governance, compliance (MMC, USCTP, SUPIMA), KPI dashboards & risk management modules.</p>
-    </div>
+<div class="timeline-item">
+<h3>Associate Project Lead — TextileGenesis (June 2023 – Oct 2025)</h3>
+<div class="details">
+• Led end-to-end delivery of supply chain traceability programs covering 14+ million units for American Eagle Outfitters and 12+ million units for Varner.<br><br>
+• Managed cross-functional teams across product, engineering, compliance, and customer success to deliver enterprise-scale implementations.<br><br>
+• Owned full project lifecycle including planning, sprint execution, stakeholder communication, risk mitigation, governance, and change management.<br><br>
+• Drove compliance initiatives across MMC, USCTP, SUPIMA, and Recycled Synthetics ensuring audit readiness and transparency across global supply chains.<br><br>
+• Facilitated sprint planning and backlog prioritization using JIRA to proactively resolve dependencies and execution risks.<br><br>
+• Contributed to roadmap development and rollout of Level 1 traceability and risk management modules for footwear supply chains.<br><br>
+• Established KPI dashboards to track adoption rates, performance metrics, and measure implementation success.
+</div>
+</div>
 
-    <div class="timeline-item">
-      <h3>Buying & Merchandising — PUMA Group (2023)</h3>
-      <p>Strategic product research, assortment planning, sportswear expansion, and pricing optimization.</p>
-    </div>
+<div class="timeline-item">
+<h3>Buying & Merchandising — PUMA Group (Jan 2023 – Apr 2023)</h3>
+<div class="details">
+• Identified product gaps, market trends and growth opportunities enhancing strategic direction for cricket-focused sportswear.<br><br>
+• Conducted in-depth research on sports accessories and team apparel informing development of socks, footwear and cricket equipment.<br><br>
+• Addressed sizing challenges and optimized assortment planning and pricing strategies to expand customer reach.
+</div>
+</div>
 
-    <div class="timeline-item">
-      <h3>Buying Intern — Reliance Brands</h3>
-      <p>Led footwear trend analysis for SS23, inventory execution for Armani Exchange.</p>
-    </div>
+<div class="timeline-item">
+<h3>Buying Intern — Reliance Brands Limited (June 2022 – July 2022)</h3>
+<div class="details">
+• Led footwear-focused market and trend analysis informing SS23 buying strategy aligned to consumer trends.<br><br>
+• Managed buying and planning for Armani Exchange optimizing seasonal demand planning and stock allocation.<br><br>
+• Executed inventory planning for SS22 second delivery ensuring timely stock availability.<br><br>
+• Developed Product Care Manual and Training Manual strengthening luxury retail customer experience.
+</div>
+</div>
 
-  </div>
+<div class="timeline-item">
+<h3>Research Analyst Writer — A2Z Planner & Solutions</h3>
+<div class="details">
+• Designed and executed market research strategies identifying trends and business opportunities.<br><br>
+• Conducted financial analysis and annual report reviews supporting management decision-making.<br><br>
+• Mentored junior researchers fostering structured research processes and team development.
+</div>
+</div>
+
+</div>
 </section>
 
 <section>
-  <h2 class="fade-in">Core Strength</h2>
-  <div class="skills fade-in">
+<h2 class="fade">Core Competencies</h2>
+<div class="skills fade">
 
-    <div class="skill">
-      Agile & Sprint Leadership
-      <div class="bar"><div class="progress" data-progress="95%"></div></div>
-    </div>
+<div class="skill">
+Agile & Waterfall Program Management
+<div class="bar"><div class="progress" data-progress="95%"></div></div>
+</div>
 
-    <div class="skill">
-      Governance & Compliance
-      <div class="bar"><div class="progress" data-progress="90%"></div></div>
-    </div>
+<div class="skill">
+Governance & Compliance Execution
+<div class="bar"><div class="progress" data-progress="92%"></div></div>
+</div>
 
-    <div class="skill">
-      Cross Functional Leadership
-      <div class="bar"><div class="progress" data-progress="92%"></div></div>
-    </div>
+<div class="skill">
+Cross-Functional Leadership
+<div class="bar"><div class="progress" data-progress="93%"></div></div>
+</div>
 
-    <div class="skill">
-      KPI & Dashboard Strategy
-      <div class="bar"><div class="progress" data-progress="88%"></div></div>
-    </div>
+<div class="skill">
+Risk Management & KPI Reporting
+<div class="bar"><div class="progress" data-progress="90%"></div></div>
+</div>
 
-  </div>
+</div>
 </section>
 
 <section>
-  <h2 class="fade-in">Certifications</h2>
-  <p class="fade-in">Google Project Management | Accounting Technicians | Harappa Change Leadership | UNSW College | Udacity Scholar</p>
-  <a href="certificates.pdf" class="button fade-in">View Certificates</a>
+<h2 class="fade">Education & Certifications</h2>
+<div class="fade" style="color:#aaa;line-height:1.8;">
+Masters of Fashion Management — National Institute of Fashion Technology (2023)<br>
+Bachelor of Commerce — Heramba Chandra College (2017)<br><br>
+Foundations of Project Management – Google<br>
+Accounting Technicians – Institute of Cost Accountants of India<br>
+Google India Challenge Scholarship – Udacity<br>
+Embracing Change – Harappa<br>
+UNSW College Certifications<br>
+Key-Frame Short Film Competition – 1st Prize
+<br><br>
+Languages: English | Bengali | Hindi
+<br><br>
+<a href="certificates.pdf" class="button">View Certificates</a>
+</div>
 </section>
 
 <footer>
-  © 2026 Rahul Mukherjee | Built with Precision.
+© 2026 Rahul Mukherjee | Precision in Execution.
 </footer>
 
 <script>
 
-// Timeline click interaction
 document.querySelectorAll(".timeline-item").forEach(item=>{
-  item.addEventListener("click",()=>{
-    item.classList.toggle("active");
-  });
+item.addEventListener("click",()=>{
+item.classList.toggle("active");
+});
 });
 
-// Scroll fade animation
-const faders = document.querySelectorAll(".fade-in");
-const appear = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
+const faders=document.querySelectorAll(".fade");
+const appear=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
 });
 faders.forEach(el=>appear.observe(el));
 
-// Skill animation
-const skills = document.querySelectorAll(".progress");
-const skillObserver = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.style.width = entry.target.dataset.progress;
-    }
-  });
+const skills=document.querySelectorAll(".progress");
+const skillObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.width=entry.target.dataset.progress;
+}
+});
 });
 skills.forEach(skill=>skillObserver.observe(skill));
 
